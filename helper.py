@@ -1,4 +1,4 @@
-from model import TreeNode
+from model import TreeNode, ListNode
 
 
 def get_tree_from_list(li):
@@ -21,3 +21,16 @@ def get_tree_from_list(li):
                 node_list[parent_idx].right = TreeNode(num)
             node_list.append(TreeNode(num))
     return node_list[0]
+
+
+def get_linked_list_from_list(li):
+    """"
+    :param li: list of integers
+    :return: header node
+    """
+    curr = dummy = ListNode(0)
+    for i in li:
+        curr.next = ListNode(i)
+        curr = curr.next
+
+    return dummy.next
