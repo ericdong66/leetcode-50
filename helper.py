@@ -56,3 +56,23 @@ def get_random_linked_list_from_list(li):
         node.random = lookup[random_idx]
 
     return dummy.next
+
+
+def in_order_depth_first_traversal(root):
+    """
+    :param root: root of a tree node
+    :return: result of in order dfs
+    """
+    result, stack = [], [(root, False)]
+
+    while stack:
+        node, visited = stack.pop()
+        if node is None:
+            continue
+        if visited:
+            result.append(node.val)
+        else:
+            stack.append((node.right, False))
+            stack.append((node, True))
+            stack.append((node.left, False))
+    return result
