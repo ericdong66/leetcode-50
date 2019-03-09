@@ -76,3 +76,23 @@ def in_order_depth_first_traversal(root):
             stack.append((node, True))
             stack.append((node.left, False))
     return result
+
+
+def breadth_first_traversal(root):
+    """
+    :param root: root of a tree node
+    :return: result of in order dfs
+    """
+    result, queue = [], [root]
+
+    while queue:
+        node = queue.pop(0)
+        if node is None:
+            continue
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+        result.append(node.val)
+
+    return result
