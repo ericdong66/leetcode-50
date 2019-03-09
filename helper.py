@@ -12,15 +12,16 @@ def get_tree_from_list(li):
 
     node_list = list()
     for idx, num in enumerate(li):
+        new_node = TreeNode(num)
         if idx == 0:
-            node_list.append(TreeNode(num))
+            node_list.append(new_node)
         else:
             parent_idx, right = divmod((idx - 1), 2)
             if not right:
-                node_list[parent_idx].left = TreeNode(num)
+                node_list[parent_idx].left = new_node
             else:
-                node_list[parent_idx].right = TreeNode(num)
-            node_list.append(TreeNode(num))
+                node_list[parent_idx].right = new_node
+            node_list.append(new_node)
     return node_list[0]
 
 
