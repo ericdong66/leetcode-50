@@ -35,3 +35,14 @@ class RandomListNode:
                 random_label = None
             return "{}-{} -> {}".format(self.label, random_label, self.next)
 
+
+# Definition for a undirected graph node
+class UndirectedGraphNode:
+    def __init__(self, x):
+        self.label = x
+        self.neighbors = []
+
+    def __repr__(self):
+        if self:
+            return "{}<->{}".format(self.label,
+                                    [n.label for n in self.neighbors])
