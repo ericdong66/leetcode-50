@@ -31,7 +31,7 @@ if __name__ == "__main__":
     parser.add_argument('--list', dest='list', required=True, nargs='+',
                         type=int, help='list of integer')
     parser.add_argument('--target', dest='target', required=True,
-                        help='target number')
+                        type=int, help='target number')
 
     args = parser.parse_args()
-    print(Solution().two_sum(args.list, int(args.target)))
+    print(Solution().two_sum(args.list, args.target))
