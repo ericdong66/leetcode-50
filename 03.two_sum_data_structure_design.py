@@ -14,36 +14,36 @@
 
 
 import argparse
+from collections import defaultdict
 
 
 class TwoSum(object):
 
     def __init__(self):
-        self.data = set()
+        self.data = defaultdict(int)
 
     def add(self, number):
-        self.data.add(number)
+        self.data[number] += 1
 
     def find(self, target):
-        lookup = dict()
-        for idx, n in enumerate(self.data):
-            if target - n in lookup:
+        for key in self.data:
+            num = target - key
+            if num in self.data and (num != key or self.data[key] > 1):
                 return True
-            lookup[n] = idx
         return False
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--list', dest='list', required=True, nargs='+',
-                        help='list of integer')
+                        type=int, help='list of integer')
     parser.add_argument('--target', dest='target', required=True,
-                        help='target number')
+                        type=int, help='target number')
 
     args = parser.parse_args()
 
     s = TwoSum()
-    for i in [int(i) for i in args.list]:
+    for i in args.list:
         s.add(i)
 
-    print(s.find(int(args.target)))
+    print(s.find(args.target))
