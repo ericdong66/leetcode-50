@@ -11,13 +11,14 @@ import argparse
 
 
 class Solution(object):
-    @staticmethod
-    def find_missing_ranges(nums, lower, upper):
-        def get_range(lower, upper):
-            if lower == upper:
-                return "{}".format(lower)
-            else:
-                return "{}->{}".format(lower, upper)
+
+    def get_range(self, lower, upper):
+        if lower == upper:
+            return "{}".format(lower)
+        else:
+            return "{}->{}".format(lower, upper)
+
+    def find_missing_ranges(self, nums, lower, upper):
         ranges = []
         pre = lower - 1
 
@@ -27,11 +28,23 @@ class Solution(object):
             else:
                 cur = nums[i]
             if cur - pre >= 2:
-                ranges.append(get_range(pre + 1, cur - 1))
+                ranges.append(self.get_range(pre + 1, cur - 1))
 
             pre = cur
 
         return ranges
+
+    def missing(self, nums):
+        result = list()
+        if not nums:
+            return result
+
+        pre = nums[0]
+        for cur in nums[1:]:
+            if cur - pre >= 2:
+                result.append(self.get_range(pre+1, cur-1))
+            pre = cur
+        return result
 
 
 if __name__ == "__main__":
@@ -44,4 +57,5 @@ if __name__ == "__main__":
                         help='upper boundary')
 
     args = parser.parse_args()
-    print(Solution().find_missing_ranges(args.list, args.lower, args.upper))
+    # print(Solution().find_missing_ranges(args.list, args.lower, args.upper))
+    print(Solution().missing(args.list))
