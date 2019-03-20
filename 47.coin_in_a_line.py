@@ -16,27 +16,6 @@
 # O(n) time and O(1) memory
 
 
-"""
-class Solution {
-public:
-    /**
-     * @param n: an integer
-     * @return: a boolean which equals to true if the first player will win
-     */
-     bool firstWillWin(int n) {
-        if (n <= 0) return false;
-        if (n <= 2) return true;
-        vector<bool> dp(n + 1, true);
-        dp[3] = false;
-        for (int i = 4; i <= n; ++i) {
-            dp[i] = dp[i - 3];
-        }
-        return dp.back();
-    }
-};
-"""
-
-
 class Solution(object):
     @staticmethod
     def first_will_win(n):
