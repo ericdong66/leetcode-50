@@ -20,7 +20,7 @@ class Solution(object):
             for key in reversed(key_set):
                 while num // key > 0:
                     num -= key
-                    result += numeral_map[key]
+                    result.append(numeral_map[key])
 
         return "".join(result)
 
