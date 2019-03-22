@@ -18,10 +18,13 @@ class Solution:
         for cur in range(1, len(s)):
             if s[cur] == s[cur - 1]:
                 continue
+            # hit 3rd char
             if pre >= 0 and s[cur] != s[pre]:
                 longest = max(longest, cur - start)
                 start = pre + 1
+            # hit 2nd char
             pre = cur - 1
+        # edge case to cover last char
         longest = max(longest, len(s) - start)
         return longest
 
