@@ -11,6 +11,7 @@
 import argparse
 from collections import defaultdict
 
+
 class Solution:
     @staticmethod
     def length_of_longest_substring(s):
@@ -26,11 +27,11 @@ class Solution:
     @staticmethod
     def length_of_longest_substring2(s):
         lookup, start, longest = defaultdict(lambda: -1), 0, 0
-        for i, char in enumerate(s):
+        for idx, char in enumerate(s):
             if lookup[char] >= start:
                 start = lookup[char] + 1
-            lookup[char] = i
-            longest = max(longest, i - start + 1)
+            lookup[char] = idx
+            longest = max(longest, idx - start + 1)
         return longest
 
 
