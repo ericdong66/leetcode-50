@@ -20,10 +20,11 @@ class Solution(object):
     @staticmethod
     def two_sum(nums, target):
         lookup = dict()
-        for idx, num in enumerate(nums):
-            if target - num in lookup:
-                return lookup[target - num], idx
-            lookup[num] = idx
+        for idx, num1 in enumerate(nums):
+            num2 = target - num1
+            if num2 in lookup:
+                return lookup[num2], idx
+            lookup[num1] = idx
 
 
 if __name__ == "__main__":
