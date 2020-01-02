@@ -8,12 +8,10 @@ var twoSum = function(nums, target) {
     var ans = [];
     for (var i = 0; i < nums.length; i++) {
         var num = target - nums[i];
-        if (lookup[num.toString()] === undefined) {
-            lookup[nums[i].toString()] = i;
-        } else {
+        if (lookup[num.toString()] !== undefined) {
             ans = [i, lookup[num.toString()]];
-            break;
+            return ans;
         }
+        lookup[nums[i].toString()] = i;
     }
-    return ans;
 };
