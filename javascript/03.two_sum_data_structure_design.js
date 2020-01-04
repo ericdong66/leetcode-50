@@ -4,7 +4,7 @@ class TwoSum {
     }
     add(num) {
         if (this.lookup[num.toString()] === undefined) {
-            this.lookup[num.toString()] = 0;
+            this.lookup[num.toString()] = 1;
         }
         else {
             this.lookup[num.toString()]++;
